@@ -80,7 +80,9 @@ const login = async (req, res) => {
             return res.status(400).json({ message: "Incorrect password" });
         }
 
-        res.status(200).json({ message: user });
+        const { password: userpass, ...userdata } = user
+
+        res.status(200).json({ message: userdata });
     }
 
 
@@ -91,6 +93,8 @@ const login = async (req, res) => {
             },
         });
 
+        // console.log(user)
+
         if (!user) {
             return res.status(400).json({ message: "User does not exist" });
         }
@@ -99,7 +103,9 @@ const login = async (req, res) => {
             return res.status(400).json({ message: "Incorrect password" });
         }
 
-        res.status(200).json({ message: user });
+        const { password: userpass, ...userdata } = user
+
+        res.status(200).json({ message: userdata });
     }
 
 };
